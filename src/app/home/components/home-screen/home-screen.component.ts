@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FinalResponseMultiples, FindMultiples } from '@app/home/utils/find-multiples/find-multiples';
 
 @Component({
@@ -9,8 +9,9 @@ import { FinalResponseMultiples, FindMultiples } from '@app/home/utils/find-mult
 export class HomeScreenComponent implements OnInit {
   constructor() {}
 
-  // ListNumbers: FinalResponseMultiples[] = [{ number: 1, color: 'white' }];
   ListNumbers: FinalResponseMultiples[] = [];
+  @Input()
+  username: string | undefined;
 
   getMultiples(num: any) {
     const result = FindMultiples.findMultiples(num);
