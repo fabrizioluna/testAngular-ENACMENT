@@ -12,4 +12,12 @@ export const environment = {
   serverUrl: 'https://api.chucknorris.io',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'es-ES'],
+  firebaseCredentials: {
+    apiKey: 'AIzaSyAwHygVndYCGt8n1YSJ5DXLW4wU0goRLLU',
+    authDomain: 'challenge-enacment-fabrizio.firebaseapp.com',
+    projectId: 'challenge-enacment-fabrizio',
+    storageBucket: 'challenge-enacment-fabrizio.appspot.com',
+    messagingSenderId: '489308302432',
+    appId: '1:489308302432:web:62e9d0e91c32e3505ea705',
+  },
 };

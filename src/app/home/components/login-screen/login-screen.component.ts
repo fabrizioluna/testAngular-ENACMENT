@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@app/firebase/auth.service';
 
 interface Errors {
   description: string;
@@ -10,11 +11,14 @@ interface Errors {
   styleUrls: ['./login-screen.component.scss'],
 })
 export class LoginScreenComponent implements OnInit {
+  constructor(private authService: AuthService) {}
+
   errors: Errors[] = [];
   showMultiplesComponent: boolean = false;
   usernameToShow: string = '';
+  userId: string = '';
 
-  authenticateUser(username: string, password: string) {
+  async authenticateUser(username: string, password: string) {
     // Reseteamos la variable para evitar multiples
     // mensajes de error.
 
@@ -28,9 +32,13 @@ export class LoginScreenComponent implements OnInit {
     if (password.trim().length < 5)
       return (this.errors = [...this.errors, { description: 'La contraseña tiene que ser entre 5 y 15 caracteres.' }]);
 
+    const { user, error, idUser } = await this.authService.loginUser(username, password);
+    if (error.length > 1) return (this.errors = [...this.errors, { description: error }]);
+
     // Si el auth está correcto... entonces
     // habilitamos el componente de multiples.
-    return (this.showMultiplesComponent = true), (this.usernameToShow = username);
+
+    return (this.showMultiplesComponent = true), (this.usernameToShow = user), (this.userId = idUser);
   }
 
   ngOnInit(): void {}
