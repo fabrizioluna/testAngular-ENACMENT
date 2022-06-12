@@ -1,0 +1,10 @@
+<span>Hola bienvenido X</span>
+<span>Ingresa un número para calcular</span>
+<input type="number" #numberToFind />
+<button (click)="getMultiples(numberToFind.value)">Enviar numero</button>
+
+<div *ngIf="ListNumbers.length >= 1">
+  <ul *ngFor="let element of ListNumbers">
+    <li>{{ element.number }}</li>
+  </ul>
+</div>
