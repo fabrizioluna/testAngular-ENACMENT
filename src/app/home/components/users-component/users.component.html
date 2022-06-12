@@ -1,0 +1,6 @@
+<h1>Últimos usuarios</h1>
+<div *ngIf="usersList.length >= 1">
+  <ul *ngFor="let user of usersList">
+    <li>{{ user.username }}</li>
+  </ul>
+</div>

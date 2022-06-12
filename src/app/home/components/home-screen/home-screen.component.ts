@@ -11,7 +11,6 @@ export class HomeScreenComponent implements OnInit {
   constructor(private logsService: LogsService) {}
 
   ListNumbers: FinalResponseMultiples[] = [];
-  allLogs: any = [];
 
   @Input()
   username: string | undefined;
@@ -21,10 +20,11 @@ export class HomeScreenComponent implements OnInit {
   async getMultiples(num: any) {
     const result = FindMultiples.findMultiples(num);
     const resultsToSave: number[] = [];
+    const thisDate = new Date();
 
-    result.map((num) => resultsToSave.push(num.number));
+    result.map((num: any) => resultsToSave.push(num.number));
 
-    await this.logsService.createLogRequest(this.userId as string, {
+    await this.logsService.createLogRequest({
       requests: [
         {
           enteredNumber: parseInt(num),
@@ -33,13 +33,12 @@ export class HomeScreenComponent implements OnInit {
       ],
       user_name: this.username as string,
       user_id: this.userId as string,
-      date: new Date().toDateString(),
+      date: thisDate.toDateString(),
+      time: `${thisDate.getHours()}:${thisDate.getMinutes()}:${thisDate.getSeconds()}`,
     });
 
     this.ListNumbers = result;
   }
 
-  ngOnInit(): void {
-    this.logsService.getGlobalLogs().subscribe((logs) => (this.allLogs = console.log(logs)));
-  }
+  ngOnInit(): void {}
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, CollectionReference, doc, updateDoc } from 'firebase/firestore';
 
 interface LogObject {
   requests: [
@@ -12,6 +12,7 @@ interface LogObject {
   user_name: string;
   user_id: string;
   date: string;
+  time: String;
 }
 
 @Injectable({
@@ -22,15 +23,8 @@ export class LogsService {
 
   private logs = collection(this.firestore, 'logs');
 
-  insertLog() {
-    return addDoc(this.logs, []);
-  }
-
-  async createLogRequest(userId: string, logObject: LogObject) {
-    // const logsUpdate = doc(this.firestore, 'logs', userId);
-    // const log = await updateDoc(logsUpdate, { logObject });
-    const log = await addDoc(this.logs, logObject);
-    console.log(log);
+  async createLogRequest(logObject: LogObject) {
+    return await addDoc(this.logs, logObject);
   }
 
   getGlobalLogs() {
