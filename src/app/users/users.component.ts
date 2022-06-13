@@ -11,6 +11,7 @@ export class UsersComponent {
 
   usersList: any = [];
 
+  // Obtenemos la Lista de Usuarios Registrados.
   ngOnInit(): void {
     this.usersService.getListUsers().subscribe((users) => (this.usersList = users));
   }
