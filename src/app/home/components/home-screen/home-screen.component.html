@@ -1,17 +1,17 @@
-<span>Bienvenido {{ username }}</span>
-<br />
-<span>¿Qué número deseas calcular?</span>
-<br />
-<br />
-<input type="number" #numberToFind />
-<br />
-<div *ngIf="ListNumbers.length >= 1">
-  <ul *ngFor="let element of ListNumbers">
-    <li>{{ element.number }}</li>
-  </ul>
-</div>
-<br />
-<button (click)="getMultiples(numberToFind.value)">Enviar numero</button>
-<br />
-<log-componente></log-componente>
-<users-component></users-component>
+<section>
+  <div class="container-fluid">
+    <h1>Bienvenido {{ username }}, ¿Qué número deseas calcular?</h1>
+    <br />
+    <br />
+    <input class="form-control" type="number" #numberToFind />
+    <br />
+    <div *ngIf="ListNumbers.length >= 1">
+      <ul *ngFor="let element of ListNumbers">
+        <li class="color_{{ ListNumbers[0].color }}">{{ element.number }}</li>
+      </ul>
+    </div>
+    <br />
+    <button class="btn btn-outline-dark" (click)="getMultiples(numberToFind.value)">Probar este número</button>
+    <br />
+  </div>
+</section>
