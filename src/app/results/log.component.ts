@@ -11,6 +11,7 @@ export class LogComponent {
 
   allLogs: any = [];
 
+  // Obtenemos los registros desde el servicio getGlobalLogs.
   ngOnInit(): void {
     this.logsService.getGlobalLogs().subscribe((logs) => (this.allLogs = logs));
   }

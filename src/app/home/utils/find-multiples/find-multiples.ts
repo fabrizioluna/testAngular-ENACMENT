@@ -17,9 +17,7 @@ export class FindMultiples {
 
     // Iteramos el numero que ingresa el usuario
     // y guardamos lo que devuelva la funcion isMultiple
-    for (let index = 0; index <= parseInt(num); index++) {
-      result = this.isMultiple(index, parseInt(num));
-    }
+    result = this.isMultiple(parseInt(num));
 
     // Retornamos el resultado con la respuesta
     // con el formato de: { number: x, color: x }
@@ -27,7 +25,7 @@ export class FindMultiples {
     return this.TransformResponse(result);
   }
 
-  static isMultiple(index: number, num: number): ResponseMultiples[] {
+  static isMultiple(num: number): ResponseMultiples[] {
     // Recibimos el indice de la primera iteración
     // y tambien el numero que ingreso el usuario
     let operation: ResponseMultiples[] = [];
@@ -36,7 +34,7 @@ export class FindMultiples {
     // pueden añadir más numeros.
     const multiples = [3, 5, 7];
     for (let secondIndex = 0; secondIndex < multiples.length; secondIndex++) {
-      if ((index * num) % multiples[secondIndex] === 0 && index === num)
+      if (num % multiples[secondIndex] === 0)
         // Si todo es correcto, utilizando el operador spreed, agregamos
         // un nuevo objecto al array de 'operation'.
         operation = [...operation, { number: multiples[secondIndex] }];

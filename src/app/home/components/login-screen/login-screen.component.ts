@@ -28,9 +28,9 @@ export class LoginScreenComponent implements OnInit {
     // o que no tenga el tamaño de +5 caracteres.
 
     if (username.trim().length < 5)
-      this.errors = [...this.errors, { description: 'El nombre de usuario tiene que ser entre 5 y 15 caracteres.' }];
+      this.errors = [...this.errors, { description: 'El nombre de usuario tiene que ser minimo 5 caracteres.' }];
     if (password.trim().length < 5)
-      return (this.errors = [...this.errors, { description: 'La contraseña tiene que ser entre 5 y 15 caracteres.' }]);
+      return (this.errors = [...this.errors, { description: 'La contraseña tiene que ser minimo 5 caracteres.' }]);
 
     const { user, error, idUser } = await this.authService.loginUser(username, password);
     if (error.length > 1) return (this.errors = [...this.errors, { description: error }]);
