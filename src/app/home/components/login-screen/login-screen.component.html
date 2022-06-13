@@ -3,34 +3,34 @@
     Entonces iniciamos el login... de lo contrario mostramos
     el componente para hacer el calculo. 
 -->
-<div *ngIf="!showMultiplesComponent">
-  <h1>Ingresar</h1>
-  <br />
-  <br />
-  <br />
-  <!-- 
-    Hacemos un for de los errores que existan en la autenticacion.
-   -->
-  <div *ngIf="errors.length >= 1">
-    Hay errores en los siguientes campos:
-    <ul *ngFor="let error of errors">
-      <li>{{ error.description }}</li>
-    </ul>
+<section *ngIf="!showMultiplesComponent">
+  <div>
+    <h1>Ingresa a tu sesión</h1>
+    <br />
+    <!-- 
+      Hacemos un for de los errores que existan en la autenticacion.
+    -->
+    <div *ngIf="errors.length >= 1">
+      Hay errores en los siguientes campos:
+      <ul *ngFor="let error of errors">
+        <li>{{ error.description }}</li>
+      </ul>
+    </div>
+    <h3>Ingresa tu nombre</h3>
+    <input class="form-control" type="text" name="username" id="username" #username />
+    <br />
+    <br />
+    <h3>Ingresa tu contraseña</h3>
+    <input class="form-control" type="password" name="password" id="password" #password />
+    <br />
+    <br />
+    <button class="btn btn-outline-dark" (click)="authenticateUser(username.value, password.value)">Ingresar</button>
   </div>
-  <h3>Ingresa tu nombre</h3>
-  <input type="text" name="username" id="username" #username />
-  <br />
-  <br />
-  <h3>Ingresa tu contraseña</h3>
-  <input type="password" name="password" id="password" #password />
-  <br />
-  <br />
-  <button (click)="authenticateUser(username.value, password.value)">Ingresar</button>
-</div>
+</section>
 <!-- 
     Aqui si la propiedad está en true entonces mostramos el 
     componente y ocultamos el de login.
  -->
-<div *ngIf="showMultiplesComponent">
+<section *ngIf="showMultiplesComponent">
   <app-home-screen [username]="usernameToShow" [userId]="userId"></app-home-screen>
-</div>
+</section>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LogsService } from '@app/firebase/logs.service';
 
 @Component({
-  selector: 'log-componente',
+  selector: 'log-component',
   templateUrl: './log.component.html',
   styleUrls: ['./log.component.scss'],
 })
